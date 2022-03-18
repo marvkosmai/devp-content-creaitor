@@ -1,6 +1,7 @@
 import os
 import io
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api.formatters import TextFormatter
 
 """
 import google_auth_oauthlib.flow
@@ -47,14 +48,13 @@ TomScottSubtitleID1='0WIYZsAZMKysdaBQX5FzKKcZTyJlT4t-'
 def get_subtitles(videoId:str)->str:
     transcript_list = YouTubeTranscriptApi.list_transcripts(TomScottVideoID1)
     manual_english_transcript = transcript_list.find_manually_created_transcript(['en'])
-    subtitle_lines_dict = manual_english_transcript.fetch()
-    subtitles = ''
-    for line in subtitle_lines_dict:
-        subtitles+=' '+line['text']
+    transcript = manual_english_transcript.fetch()
+    formatter = TextFormatter()
+    subtitles = formatter.format_transcript(transcript)
     return subtitles
 
 
 if __name__ == "__main__":
     subtitles = get_subtitles(TomScottVideoID1)
-    with open('Test.txt','w') as file:
+    with open('Test.txt','w',encoding='utf-8') as file:
         file.writelines(subtitles)

@@ -1,2 +1,6 @@
 pandas
 scikit-learn
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+youtube_transcript_api

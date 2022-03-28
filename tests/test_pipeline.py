@@ -9,7 +9,7 @@ import src.pipeline.Pipeline as Pipeline
 class TestPipeline:
     def test_init(self):
         data = [1, 2, 3]
-        p_test = Pipeline.Pipeline(data)
+        p_test = Pipeline.Pipeline(pd.DataFrame(data))
         data_comp = p_test.data.equals(pd.DataFrame(data))
         processed_data_comp = p_test.processed_data.equals(pd.DataFrame(data))
         queue_comp = p_test.functions_queue == []
@@ -25,7 +25,6 @@ class TestPipeline:
                 file.write('1\n2\n3')
             p_test = Pipeline.Pipeline()
             p_test.read_data_from_csv(test_file, sep=',', header=None)
-            test = pd.DataFrame(data)
             equal = p_test.data.equals(pd.DataFrame(data))
             assert equal
         finally:
@@ -47,8 +46,6 @@ class TestPipeline:
             csv_list = [test_file1, test_file2]
             p_test = Pipeline.Pipeline()
             p_test.batch_read_data_from_csv(csv_list, sep=',', header=None)
-            test = pd.DataFrame(data)
-            test2 = p_test.data
             equal = p_test.data.equals(pd.DataFrame(data))
             assert equal
         finally:
@@ -57,27 +54,27 @@ class TestPipeline:
 
     def test_add_step(self):
         data = [1, 2, 3]
-        p_test = Pipeline.Pipeline(data)
+        p_test = Pipeline.Pipeline(pd.DataFrame(data))
         p_test.add_step(print)
         p_queue = p_test.functions_queue
         assert p_queue == [print]
 
     def test_add_step_non_function(self):
         data = [1, 2, 3]
-        p_test = Pipeline.Pipeline(data)
+        p_test = Pipeline.Pipeline(pd.DataFrame(data))
         with pytest.raises(TypeError):
             p_test.add_step(1)
 
     def test_remove_last_step(self):
         data = [1, 2, 3]
-        p_test = Pipeline.Pipeline(data)
+        p_test = Pipeline.Pipeline(pd.DataFrame(data))
         p_test.add_step(print)
         p_test.remove_last_step()
         assert p_test.functions_queue == []
 
     def test_run(self):
         data = [1, 2, 3]
-        p_test = Pipeline.Pipeline(data)
+        p_test = Pipeline.Pipeline(pd.DataFrame(data))
         p_test.add_step(lambda x: x + 1)
         p_test.run()
 

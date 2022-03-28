@@ -1,4 +1,4 @@
-from SubtitleToStorage import SubtitlesToStorage
+from src.subtitle.SubtitleToStorage import SubtitlesToStorage
 
 
 def main():

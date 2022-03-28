@@ -1,5 +1,3 @@
-import os
-import io
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import TextFormatter
 
@@ -41,11 +39,12 @@ def main():
 
 """
 
-TomScottChannelID='UCBa659QWEk1AI4Tg--mrJ2A'
-TomScottVideoID1='mzAfich6mow'
-TomScottSubtitleID1='0WIYZsAZMKysdaBQX5FzKKcZTyJlT4t-'
+TomScottChannelID = 'UCBa659QWEk1AI4Tg--mrJ2A'
+TomScottVideoID1 = 'mzAfich6mow'
+TomScottSubtitleID1 = '0WIYZsAZMKysdaBQX5FzKKcZTyJlT4t-'
 
-def get_subtitles(videoId:str)->str:
+
+def get_subtitles(videoId: str) -> str:
     transcript_list = YouTubeTranscriptApi.list_transcripts(TomScottVideoID1)
     manual_english_transcript = transcript_list.find_manually_created_transcript(['en'])
     transcript = manual_english_transcript.fetch()
@@ -56,5 +55,5 @@ def get_subtitles(videoId:str)->str:
 
 if __name__ == "__main__":
     subtitles = get_subtitles(TomScottVideoID1)
-    with open('Test.txt','w',encoding='utf-8') as file:
+    with open('Test.txt', 'w', encoding='utf-8') as file:
         file.writelines(subtitles)

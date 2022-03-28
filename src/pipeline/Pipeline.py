@@ -33,7 +33,7 @@ class Pipeline:
             self.data = self.data.append(pd.read_csv(file, **kwargs))
         self.data.reset_index(drop=True, inplace=True)
 
-    def add_step(self, function: 'callable function') -> None:
+    def add_step(self, function) -> None:
         """
         Adds a callable function to the Pipeline,
         which must take a Pandas Dataframe as input and returns a pandas Dataframe

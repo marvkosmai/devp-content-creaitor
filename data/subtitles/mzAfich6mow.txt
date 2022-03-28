@@ -1,0 +1,256 @@
+- 140 years ago, the
+Callander and Oban railway,
+in the south-west of Scotland,
+set up a rockfall detection system
+along four miles of remote
+hillside railway track.
+The astonishing thing is:
+that system is still in operation
+today, 140 years later.
+And so far no one's been able
+to come up with anything better.
+- The West Highland lines
+travel hundreds of miles
+along natural mountainsides.
+There are different hazards
+depending on where you are
+on the Scottish rail network.
+Through the Falls of Cruachan,
+the hazards there
+are definitely rockfall and boulder fall.
+We're now at Bridge of Orchy
+on the West Highland line
+and the hazards here are
+much more natural landslides
+and debris flows down the
+steep-sided mountains.
+Rocks that are very small can
+pose a risk to the train operations.
+So something as small as a microwave
+can cause a train a problem.
+Something as big as a washing machine
+could lead to derailment 
+so it is a really serious issue.
+Definitely stopping the hazard at source
+is the best option for us.
+In a typical year we will
+spend somewhere in the region
+of £40 million, and that's on things
+that prevent landslides
+or improve the resilience
+of our infrastructure to extreme weather.
+- Thank you very much!
+- So Scotland's railway is
+about 3,500 track-miles.
+So we can't protect that whole length,
+so we need to look at other
+ways of keeping the trains safe,
+which is where the rockfall
+detection comes in.
+- By modern standards,
+it's a really basic system.
+There's no electricity.
+Just these wires along the
+track, held under tension,
+mechanically linked to the signals.
+If a big boulder falls down,
+it hits a wire, the wire snaps,
+the tension's released,
+and the signal at each end of that bit
+of wire changes to show danger.
+Repeat for 17 signals over
+the four miles of railway.
+The system was nicknamed
+Anderson's Piano after its inventor
+and after the humming noises
+that the wires sometimes
+make in high winds.
+- Anderson's Piano is a
+very old system, 140 years.
+Keeping something like that
+going in a modern environment,
+it is quite challenging.
+Firstly, I guess there's the knowledge.
+There's not a user manual
+or a downloadable book
+on how to maintain Anderson's Piano.
+We need to pass that
+down through generations
+of technicians and engineers.
+And then there's just
+getting hold of the kit.
+A lot of it was bespoke, made in
+foundries in the Victorian era.
+Some of it we've had to improvise.
+Some of it is just
+availability of material.
+So getting hold of some of the wire
+can be quite challenging.
+And we think we've managed
+to find a reasonable source
+that is a good enough match.
+The kind of rural fence that
+will use that kind of wire,
+the manufacturers are striving
+to make it stronger and stronger
+and we don't need it stronger
+for Anderson's piano.
+We need it to break when
+there's a rock comes through it.
+It's not perfect detection
+in terms of screening out.
+So vegetation can trip it off,
+animal movements if they
+do get inside the boundary.
+Very manual to reset.
+It's a physical task that
+involves lifting weights
+and repositioning counterbalances
+and manually moving
+signals back into place.
+So we can't do that when
+the trains are running,
+so that's disruptive to our network.
+It's a physical job that
+involves human beings.
+There's not a big reset
+button that we can push.
+The first we know there's a problem
+is when the signal goes up
+and normally the first person to see that
+is the train driver.
+We are not able to respond someone
+to the problem when it occurs.
+We need to wait until after it's occurred,
+because the first time we know
+about it is when a driver tells us.
+- Modern rail safety rules
+mean that ideally,
+no one should ever drive a train
+past a signal that's set to danger.
+If that is ever needed
+because of a fault somewhere,
+it requires checking and double checking with central control.
+If a train goes past a danger
+signal without permission,
+there's always an investigation.
+If it was because the
+driver was negligent,
+it can end their career.
+But the rules for these
+signals have to be different,
+and they go against everything
+that a modern train driver learns.
+If these signals are at danger,
+you slow the train down
+to walking pace,
+to a speed where you will be able to stop
+before you hit any obstruction,
+and you radio it into central control...
+but you do continue.
+And that would never be
+allowed on a new system.
+- It's offering us a level of protection,
+so there's a line of defence there
+that works quite a lot of the time.
+It would be less safe without it.
+Prevention is better than detection,
+so stopping the rocks
+falling is definitely better
+than detecting them
+when they have occurred.
+So we put a great deal
+of effort into containing
+some of the rocks on our cuttings
+and into catching boulders
+through high-strength,
+high-capacity catch fences that
+are anchored into the rock.
+We employ all sorts of
+techniques like netting,
+and meshing, and doweling to
+hold all the rock in place.
+We're constantly looking for technology
+to improve safety on the railway.
+Satellite technology that looks
+for ground movement from space,
+and does change detection on that.
+We've tried "listening fibres"
+through fibre-optic cables
+that listen for an acoustic
+signature of a rock falling
+or a tree falling on the railway.
+The cost of that equipment
+is starting to come down.
+We're starting to see
+advances in technology
+which is making it more
+affordable to deploy.
+But one of the big issues
+is actually power.
+These things will either
+need a power supply,
+which in remote places
+can be hard to come by,
+or they'll run off batteries
+and solar panels
+which need to have sufficient capacity
+to keep them up all year round.
+Scottish winters can be quite dark.
+Some of our trials have been hampered
+by false alerts and false alarms
+and too many false alerts
+to run a railway.
+At Bridge of Orchy we've
+got some detectors in place
+to capture any movement.
+Now, they're the wireless tilt meters
+that tell us if the ground's moving.
+Like your spirit level on
+your iPhone that moves about,
+they will detect a bit of movement
+and we will get an alert or
+an alarm remotely from that.
+We've then got a camera on site
+that we can see the site
+to see whether it's a false alarm or not,
+so we're not needlessly stopping trains.
+We've got some infrared kit on there
+so that we can see at nighttime.
+Then infrared reflectors to
+see if there's been a problem
+during the hours of darkness as well.
+It's all remote back to base
+and it only requires a
+technician in our control centre
+to watch that and monitor that.
+It's also less prone to false alarms
+and we can reset it at
+the touch of a button.
+So we know about it
+before the train comes,
+we can capture the problem
+before it manifests itself on the railway,
+and we can remotely reset
+it and remotely monitor it.
+We do an awful lot, but it's
+not enough to go everywhere.
+And, you know, we can't physically
+protect every mile of railway.
+It's just impracticable.
+- From talking to the folks here,
+I'd say that the best
+description of these signals
+is that they are a
+frustrating, imperfect system
+that's still better than nothing.
+Back when I was researching
+this video, I figured
+that there must be a better solution,
+and with all the confidence of
+someone in the YouTube comments
+who's only watched half the video,
+I thought, "Hey, couldn't they just?..."
+And no. They can't, at least not yet.
+[train rumbling]
+How's that for timing?!

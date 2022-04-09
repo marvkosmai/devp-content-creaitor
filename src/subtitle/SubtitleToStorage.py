@@ -22,6 +22,9 @@ class SubtitlesToStorage:
         if 'file' == self.storage_config['type']:
             self.__save_to_file(subtitles)
 
+        if 'return_value' == self.storage_config['type']:
+            return subtitles
+
     def __subtitles_from_youtube(self):
         transcript_list = YouTubeTranscriptApi.list_transcripts(self.video_id)
         manual_english_transcript = transcript_list.find_manually_created_transcript(['en'])

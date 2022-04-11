@@ -30,7 +30,7 @@ class Pipeline:
                 else:
                     print(str(file) + " is not a valid file")
                     continue
-            self.data = pd.concat([self.data,pd.read_csv(file, **kwargs)])
+            self.data = pd.concat([self.data, pd.read_csv(file, **kwargs)])
         self.data.reset_index(drop=True, inplace=True)
 
     def add_step(self, function) -> None:
@@ -52,7 +52,3 @@ class Pipeline:
         self.processed_data = self.data
         for function in self.functions_queue:
             self.processed_data = function(self.processed_data)
-
-
-if __name__ == '__main__':
-    pass

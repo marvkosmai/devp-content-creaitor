@@ -79,4 +79,3 @@ class TestPipeline:
         p_test.run()
 
         assert p_test.processed_data.equals(pd.DataFrame([2, 3, 4]))
-

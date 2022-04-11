@@ -67,7 +67,7 @@ def videos_from_channel(channel_name: str, channel_id: str, max_results: int = 2
 
 
 if __name__ == "__main__":
-
+    """
     pd.set_option('display.max_columns', None)
     TomScottChannelID = 'UCBa659QWEk1AI4Tg--mrJ2A'
     TS_videos = videos_from_channel('TomScott', TomScottChannelID, 20)
@@ -76,4 +76,8 @@ if __name__ == "__main__":
     if TS_videos is not None and MP_videos is not None:
         all_videos = pd.concat([TS_videos, MP_videos])
         all_videos.reset_index(drop=True, inplace=True)
-        print(all_videos)
+        #print(all_videos)
+        all_videos.to_feather('test.feather')
+        test = pd.read_feather('test.feather')
+        print(test)
+    """

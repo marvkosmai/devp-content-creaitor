@@ -1,8 +1,7 @@
+"""
 import pandas as pd
 
 import src.subtitle.videos_from_channel as vfc
-
-"""
 class TestVideosFromChannel:
 
     def test_1video(self):

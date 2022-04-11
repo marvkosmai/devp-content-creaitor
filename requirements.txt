@@ -7,3 +7,4 @@ google-auth-httplib2
 youtube_transcript_api
 setuptools~=57.0.0
 httplib2~=0.20.4
+pyarrow~=7.0.0

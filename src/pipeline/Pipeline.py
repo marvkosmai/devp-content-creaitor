@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-
+import PipelineElement
 
 class Pipeline:
     def __init__(self, data: pd.DataFrame = None):
@@ -33,14 +33,14 @@ class Pipeline:
             self.data = pd.concat([self.data, pd.read_csv(file, **kwargs)])
         self.data.reset_index(drop=True, inplace=True)
 
-    def add_step(self, function) -> None:
+    def add_step(self, PipelineElementSubclass) -> None:
         """
-        Adds a callable function to the Pipeline,
+        Adds a PipelineElement to the process Pipline, Subclass must have process function,
         which must take a Pandas Dataframe as input and returns a pandas Dataframe
         """
-        if not callable(function):
-            raise TypeError('Expected Callable function but got ' + str(type(function)))
-        self.functions_queue.append(function)
+        if not issubclass(PipelineElementSubclass,PipelineElement):
+            raise TypeError('Expected Subclass from PipelineElement function but got ' + str(type(PipelineElementSubclass)))
+        self.functions_queue.append(PipelineElementSubclass.process)
 
     def remove_last_step(self) -> None:
         self.functions_queue = self.functions_queue[:-1]

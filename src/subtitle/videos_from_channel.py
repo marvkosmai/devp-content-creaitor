@@ -5,6 +5,8 @@ import googleapiclient.discovery
 import httplib2
 import pandas as pd
 
+from src import apikeys
+
 
 def videos_from_channel(channel_name: str, channel_id: str, max_results: int = 25) -> pd.DataFrame:
     """
@@ -22,10 +24,7 @@ def videos_from_channel(channel_name: str, channel_id: str, max_results: int = 2
 
         api_service_name = "youtube"
         api_version = "v3"
-
-        with open(r'C:/temp/API_KEY.txt', 'r') as file:
-            line = file.read()
-            api_key = line
+        api_key = apikeys.YOUTUBE_API_KEY
 
         youtube = googleapiclient.discovery.build(
             api_service_name, api_version, developerKey=api_key)

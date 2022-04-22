@@ -10,4 +10,3 @@ httplib2~=0.20.4
 pyarrow~=7.0.0
 openai
 tqdm
-gensim~=4.1.2

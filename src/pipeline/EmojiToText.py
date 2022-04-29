@@ -5,7 +5,6 @@ from src.pipeline.PipelineElement import PipelineElement
 
 class EmojiToText(PipelineElement):
     def __int__(self):
-        demoji.download_codes()
         pass
 
     def process(self, data: pd.DataFrame):

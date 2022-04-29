@@ -4,6 +4,7 @@ import pandas as pd
 import pytest
 
 import src.pipeline.Pipeline as Pipeline
+import src.pipeline.StripPunctuation as StripPunctuation
 
 
 class TestPipeline:

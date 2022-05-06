@@ -4,7 +4,7 @@ from src.pipeline.PipelineElement import PipelineElement
 from src.pipeline.Tokenization import Tokenization
 
 
-class TestTokenization():
+class TestTokenization:
     def test_class_inheritance(self):
         assert issubclass(Tokenization, PipelineElement)
 

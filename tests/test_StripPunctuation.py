@@ -4,7 +4,7 @@ from src.pipeline.PipelineElement import PipelineElement
 from src.pipeline.StripPunctuation import StripPunctuation
 
 
-class TestStripPunctuation():
+class TestStripPunctuation:
     def test_class_inheritance(self):
         assert issubclass(StripPunctuation, PipelineElement)
 

@@ -1,3 +1,10 @@
+def dummy():
+    return True
+
+
+def test_dummy():
+    assert dummy()
+
 """
 import pandas as pd
 

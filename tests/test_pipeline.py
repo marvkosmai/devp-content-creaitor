@@ -7,6 +7,7 @@ import src.pipeline.Pipeline as Pipeline
 from src.pipeline.StripPunctuation import StripPunctuation
 
 
+
 class TestPipeline:
     def test_init(self):
         data = [1, 2, 3]

@@ -1,15 +1,14 @@
 import pandas as pd
 
-from src.pipeline.StripPunctuation import StripPunctuation
 from src.pipeline.PipelineElement import PipelineElement
 from src.pipeline.Tokenization import Tokenization
 
 
-class TestTokenization():
+class TestTokenization:
     def test_class_inheritance(self):
         assert issubclass(Tokenization, PipelineElement)
 
-    def test_punctuation_stripping(self):
+    def test_tokenization(self):
         object = Tokenization()
         data = pd.DataFrame(['She doesn’t study German on Monday.', 'Cats hate water.'])
         data.columns = ['ProcessedSubtitles']

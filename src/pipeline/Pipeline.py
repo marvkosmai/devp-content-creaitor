@@ -39,7 +39,8 @@ class Pipeline:
         Adds a PipelineElement to the process Pipline, Subclass must have process function,
         which must take a Pandas Dataframe as input and returns a pandas Dataframe
         """
-        if not issubclass(PipelineElementSubclass, PipelineElement):
+        if not issubclass(type(PipelineElementSubclass), PipelineElement):
+
             raise TypeError(
                 'Expected Subclass from PipelineElement function but got ' + str(type(PipelineElementSubclass)))
         self.functions_queue.append(PipelineElementSubclass.process)

@@ -1,5 +1,7 @@
-import pandas as pd
 import string
+
+import pandas as pd
+
 from src.pipeline.PipelineElement import PipelineElement
 
 

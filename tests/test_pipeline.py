@@ -4,6 +4,7 @@ import pandas as pd
 import pytest
 
 import src.pipeline.Pipeline as Pipeline
+from src.pipeline.StripPunctuation import StripPunctuation
 
 
 class TestPipeline:
@@ -53,11 +54,12 @@ class TestPipeline:
             os.remove(test_file2)
 
     def test_add_step(self):
-        data = [1, 2, 3]
+        data = ['Hallo.', 'Test!', 'Beispiel,']
         p_test = Pipeline.Pipeline(pd.DataFrame(data))
-        p_test.add_step(print)
+        stripper = StripPunctuation()
+        p_test.add_step(stripper)
         p_queue = p_test.functions_queue
-        assert p_queue == [print]
+        assert p_queue == [stripper.process]
 
     def test_add_step_non_function(self):
         data = [1, 2, 3]
@@ -66,16 +68,22 @@ class TestPipeline:
             p_test.add_step(1)
 
     def test_remove_last_step(self):
-        data = [1, 2, 3]
+        data = ['Hallo.', 'Test!', 'Beispiel,']
         p_test = Pipeline.Pipeline(pd.DataFrame(data))
-        p_test.add_step(print)
+        stripper = StripPunctuation()
+        p_test.add_step(stripper)
         p_test.remove_last_step()
         assert p_test.functions_queue == []
 
     def test_run(self):
-        data = [1, 2, 3]
-        p_test = Pipeline.Pipeline(pd.DataFrame(data))
-        p_test.add_step(lambda x: x + 1)
+        data = ['Hallo.', 'Test!', 'Beispiel,']
+        data = pd.DataFrame(data)
+        data.columns = ['ProcessedSubtitles']
+        p_test = Pipeline.Pipeline(data)
+        stripper = StripPunctuation()
+        p_test.add_step(stripper)
         p_test.run()
+        result = pd.DataFrame(['Hallo','Test','Beispiel'])
+        result.columns = ['ProcessedSubtitles']
 
-        assert p_test.processed_data.equals(pd.DataFrame([2, 3, 4]))
+        assert p_test.processed_data.equals(result)

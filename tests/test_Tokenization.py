@@ -1,6 +1,5 @@
 import pandas as pd
 
-from src.pipeline.StripPunctuation import StripPunctuation
 from src.pipeline.PipelineElement import PipelineElement
 from src.pipeline.Tokenization import Tokenization
 

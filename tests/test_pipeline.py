@@ -83,7 +83,7 @@ class TestPipeline:
         stripper = StripPunctuation()
         p_test.add_step(stripper)
         p_test.run()
-        result = pd.DataFrame(['Hallo','Test','Beispiel'])
+        result = pd.DataFrame(['Hallo', 'Test', 'Beispiel'])
         result.columns = ['ProcessedSubtitles']
 
         assert p_test.processed_data.equals(result)

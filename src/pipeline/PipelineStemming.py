@@ -1,10 +1,12 @@
 import pandas as pd
 from src.pipeline.PipelineElement import PipelineElement
-from nltk.stem import PorterStemmer 
+from nltk.stem import PorterStemmer
+import nltk.downloader
 
 class PipelineStemming(PipelineElement):
 
     def __init__(self):
+        nltk.download('wordnet')
         pass
 
     def process(self, data: pd.DataFrame):

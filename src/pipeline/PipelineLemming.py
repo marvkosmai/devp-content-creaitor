@@ -1,9 +1,11 @@
 import pandas as pd
 from src.pipeline.PipelineElement import PipelineElement
 from nltk.stem import WordNetLemmatizer
+import nltk.downloader
 
 class PipelineLemming(PipelineElement):
     def __init__(self):
+        nltk.download('wordnet')
         pass
 
     def process(self, data: pd.DataFrame):

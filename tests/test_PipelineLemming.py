@@ -4,6 +4,7 @@ from src.pipeline.PipelineLemming import PipelineLemming
 from src.pipeline.PipelineElement import PipelineElement
 
 
+
 class TestPipelineLemming():
     def test_class_inheritance(self):
         assert issubclass(PipelineLemming, PipelineElement)

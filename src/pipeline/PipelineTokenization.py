@@ -3,7 +3,7 @@ from src.pipeline.PipelineElement import PipelineElement
 from gensim.utils import tokenize
 
 
-class Tokenization(PipelineElement):
+class PipelineTokenization(PipelineElement):
     def __init__(self):
         pass
 

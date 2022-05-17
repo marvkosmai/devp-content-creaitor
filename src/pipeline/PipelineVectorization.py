@@ -11,15 +11,15 @@ class PipelineVectorization(PipelineElement):
         processed_data = data.__deepcopy__()
         subtitles = pd.DataFrame(processed_data['ProcessedSubtitles'])
 
-        temp = []
+        w2v_model_list = []
         for index, element in enumerate(subtitles.values):
-            splitted_subtitle = subtitles.iloc[index, 0].split(" ")
-            temp.append(splitted_subtitle)
+            splitted_subtitle = [subtitles.iloc[index, 0].split(" ")]
 
-        # create Pandas Series with define indexes
-        x = pd.Series(temp)
+            # create Pandas Series with define indexes
+            splitted_subtitle_series = pd.Series(splitted_subtitle)
 
-        w2v_model = gensim.models.Word2Vec(x, vector_size=100, window=5, min_count=2)
+            w2v_model = gensim.models.Word2Vec(splitted_subtitle_series, vector_size=100, window=5, min_count=1)
+            w2v_model_list.append(w2v_model)
 
-        processed_data['ProcessedSubtitles'] = subtitles
+        processed_data['ProcessedSubtitles'] = w2v_model_list
         return processed_data

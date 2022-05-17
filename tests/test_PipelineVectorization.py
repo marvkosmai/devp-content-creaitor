@@ -10,11 +10,11 @@ class TestPipelineVectorization:
 
     def test_vectorization(self):
         object = PipelineVectorization()
-        data = pd.DataFrame(['She doesn’t study German on Monday.', 'Cats hate water.'])
+        data = pd.DataFrame(['she doesn’t study german on monday', 'cats hate water'])
         data.columns = ['ProcessedSubtitles']
         data = object.process(data)
-        first_list = [['she', 'doesn', 't', 'study', 'german', 'on', 'monday']]
-        second_list = [['cats', 'hate', 'water']]
-        data_compare = pd.DataFrame([first_list, second_list])
-        data_compare.columns = ['ProcessedSubtitles']
-        assert data_compare.equals(data)
+        first_list = ['monday', 'on', 'german', 'study', 'doesn’t', 'she']
+        second_list = ['water', 'hate', 'cats']
+
+        assert data.iloc[0, 0].wv.index_to_key == first_list
+        assert data.iloc[1, 0].wv.index_to_key == second_list

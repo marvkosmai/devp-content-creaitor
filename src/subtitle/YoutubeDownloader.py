@@ -1,47 +1,15 @@
+# -*- coding: utf-8 -*-
+import os
+
+import googleapiclient.discovery
+import googleapiclient.errors
+import isodate
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import TextFormatter
 
-"""
-import google_auth_oauthlib.flow
-import googleapiclient.discovery
-import googleapiclient.errors
-from googleapiclient.http import MediaIoBaseDownload
+import src.apikeys as keys
 
-def main():
-    # Disable OAuthlib's HTTPS verification when running locally.
-    # *DO NOT* leave this option enabled in production.
-    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-
-    api_service_name = "youtube"
-    api_version = "v3"
-    with open(r'C:/temp/API_KEY.txt','r') as file:
-        line = file.read()
-        DEVELOPER_KEY=line
-
-    youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, developerKey = DEVELOPER_KEY)
-
-    request = youtube.channels().list(
-        part="snippet,contentDetails,statistics",
-        id=TomScottChannelID
-    )
-    response = request.execute()
-
-    #print(response)
-    for element in response:
-        #print(element,response[element])
-        pass
-    for item in response['items']:
-        for element in item:
-            print(element,item[element])
-        for element in item['statistics']:
-            print(element,item['statistics'][element])
-
-"""
-
-TomScottChannelID = 'UCBa659QWEk1AI4Tg--mrJ2A'
-TomScottVideoID1 = 'mzAfich6mow'
-TomScottSubtitleID1 = '0WIYZsAZMKysdaBQX5FzKKcZTyJlT4t-'
+scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 
 def get_subtitles(video_id: str) -> str:
@@ -53,7 +21,35 @@ def get_subtitles(video_id: str) -> str:
     return formatted_subtitles
 
 
+def get_metadata(video_id: str) -> dict:
+    # Disable OAuthlib's HTTPS verification when running locally.
+    # *DO NOT* leave this option enabled in production.
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+    api_service_name = "youtube"
+    api_version = "v3"
+    DEVELOPER_KEY = keys.YOUTUBE_API_KEY
+
+    youtube = googleapiclient.discovery.build(
+        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+
+    request = youtube.videos().list(
+        part="snippet,contentDetails,statistics",
+        id=video_id
+    )
+    response = request.execute()
+    publish_date = response['items'][0]['snippet']['publishedAt']
+    title = response['items'][0]['snippet']['title']
+    description = response['items'][0]['snippet']['description']
+    duration = isodate.parse_duration(response['items'][0]['contentDetails']['duration'])
+    view_count = response['items'][0]['statistics']['viewCount']
+    return_dict = {'title': title, 'description': description, 'publish_date': publish_date, 'duration': duration,
+                   'view_count': view_count}
+    return return_dict
+
+
 if __name__ == "__main__":
-    subtitles = get_subtitles(TomScottVideoID1)
-    with open('Test.txt', 'w', encoding='utf-8') as file:
-        file.writelines(subtitles)
+    TomScottChannelID = 'UCBa659QWEk1AI4Tg--mrJ2A'
+    TomScottVideoID1 = 'mzAfich6mow'
+    TomScottSubtitleID1 = '0WIYZsAZMKysdaBQX5FzKKcZTyJlT4t-'
+    print(get_metadata(TomScottVideoID1))

@@ -1,15 +1,15 @@
 import pandas as pd
 
 from src.pipeline.PipelineElement import PipelineElement
-from src.pipeline.Tokenization import Tokenization
+from src.pipeline.PipelineTokenization import PipelineTokenization
 
 
-class TestTokenization:
+class TestPipelineTokenization:
     def test_class_inheritance(self):
-        assert issubclass(Tokenization, PipelineElement)
+        assert issubclass(PipelineTokenization, PipelineElement)
 
     def test_tokenization(self):
-        object = Tokenization()
+        object = PipelineTokenization()
         data = pd.DataFrame(['She doesn’t study German on Monday.', 'Cats hate water.'])
         data.columns = ['ProcessedSubtitles']
         data = object.process(data)

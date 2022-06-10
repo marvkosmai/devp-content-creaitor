@@ -5,7 +5,11 @@ import googleapiclient.discovery
 import httplib2
 import pandas as pd
 
-from src import apikeys
+try:
+    from src import apikeys
+except ImportError:
+    print("API Keys File not found. Switching to template")
+    from src import apikeys_template
 
 
 def videos_from_channel(channel_name: str, channel_id: str, max_results: int = 25) -> pd.DataFrame:
@@ -80,4 +84,3 @@ if __name__ == "__main__":
         test = pd.read_feather('test.feather')
         print(test)
     """
-

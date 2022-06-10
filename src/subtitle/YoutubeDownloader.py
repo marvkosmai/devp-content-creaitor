@@ -7,7 +7,12 @@ import isodate
 from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound
 from youtube_transcript_api.formatters import TextFormatter
 
-import src.apikeys as keys
+try:
+    import src.apikeys as keys
+except ImportError:
+    print("API Keys File not found. Switching to template")
+    import src.apikeys_template as keys
+
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 

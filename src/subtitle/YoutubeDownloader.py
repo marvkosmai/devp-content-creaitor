@@ -4,7 +4,7 @@ import os
 import googleapiclient.discovery
 import googleapiclient.errors
 import isodate
-from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound
 from youtube_transcript_api.formatters import TextFormatter
 
 import src.apikeys as keys
@@ -14,11 +14,15 @@ scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 def get_subtitles(video_id: str) -> str:
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    manual_english_transcript = transcript_list.find_manually_created_transcript(['en'])
-    transcript = manual_english_transcript.fetch()
-    formatter = TextFormatter()
-    formatted_subtitles = formatter.format_transcript(transcript)
-    return formatted_subtitles
+    try:
+        manual_english_transcript = transcript_list.find_manually_created_transcript(['en'])
+        transcript = manual_english_transcript.fetch()
+        formatter = TextFormatter()
+        formatted_subtitles = formatter.format_transcript(transcript)
+        return formatted_subtitles
+    except NoTranscriptFound:
+        print(f'No english transcript found for {video_id}')
+        return None
 
 
 def get_metadata(video_id: str) -> dict:

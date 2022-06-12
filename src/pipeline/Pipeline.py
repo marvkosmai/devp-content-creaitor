@@ -61,8 +61,13 @@ class Pipeline:
             self.data = pd.concat([self.data, pd.read_csv(file, **kwargs)])
         self.data.reset_index(drop=True, inplace=True)
 
-    def save_data_to_feather(self, file_name: str):
-        self.data.to_feather(file_name)
+    def save_data_to_feather(self, file_name: str, target: str = 'data'):
+        if target == 'data':
+            self.data.to_feather(file_name)
+        elif target == 'processed_data':
+            self.processed_data.to_feather(file_name)
+        else:
+            raise ValueError('Invalid target input. Must be data or processed_data')
 
     def load_data_from_feather(self, file_name: str, target: str = 'data'):
         fdata = pd.read_feather(file_name)

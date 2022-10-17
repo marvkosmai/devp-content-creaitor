@@ -21,3 +21,5 @@ transformers==4.22.1
 torch==1.12.1
 sentencepiece==0.1.97
 datasets==2.5.1
+evaluate==0.3.0
+sacrebleu==2.2.1

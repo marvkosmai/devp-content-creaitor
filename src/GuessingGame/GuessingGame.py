@@ -8,7 +8,7 @@ from TitleDataloader import TitleDataloader
 correct_answer = 3
 asw_counter = 0
 guessing_data = None
-
+score = 0
 
 def window_setup(window: tk.Tk):
     window.geometry('1280x720')
@@ -29,7 +29,7 @@ def window_setup(window: tk.Tk):
     asw2_stringvar.set('ASW2')
     summary_stringvar.set('Sum')
     button_style = ttk.Style()
-    button_style.configure('my.TButton', font=('Arial', 15), justify=tk.CENTER)
+    button_style.configure('my.TButton', font=('Arial', 15), justify=tk.CENTER,relief=tk.GROOVE)
     glabel_style = ttk.Style()
     glabel_style.configure('greeting.TLabel', font=('Arial', 45), justify=tk.CENTER)
     sglabel_style = ttk.Style()
@@ -41,21 +41,16 @@ def window_setup(window: tk.Tk):
     lbl_summary = ttk.Label(master=frame,textvariable = summary_stringvar,wraplength=1000, justify=tk.CENTER,
                             font=('Arial', 15))
 
-    lbl_answer1 = ttk.Label(master=frame, textvariable=asw1_stringvar, wraplength=300, justify=tk.CENTER,
-                            font=('Arial', 15))
-    lbl_answer2 = ttk.Label(master=frame, textvariable=asw2_stringvar, wraplength=300, justify=tk.CENTER,
-                            font=('Arial', 15))
-    btn_answer1 = ttk.Button(master=frame, text='Answer1', style='my.TButton',
-                             command=lambda: guess(1))
-    btn_answer2 = ttk.Button(master=frame, text='Answer2', style='my.TButton',
-                             command=lambda: guess(2))
+
+    #btn_answer1 = ttk.Button(master=frame, textvariable=asw1_stringvar, style='my.TButton',command=lambda: guess(1))
+    btn_answer1 = tk.Button(master=frame, textvariable=asw1_stringvar, font=('Arial', 15), justify=tk.CENTER,relief=tk.GROOVE,command=lambda: guess(1))
+    #btn_answer2 = ttk.Button(master=frame, textvariable=asw2_stringvar, style='my.TButton',command=lambda: guess(2))
+    btn_answer2 = tk.Button(master=frame, textvariable=asw2_stringvar, font=('Arial', 15), justify=tk.CENTER,relief=tk.GROOVE,command=lambda: guess(2))
     lbl_greeting.grid(column=0, row=0, padx=5, pady=5, columnspan=2)
     lbl_subgreeting.grid(column=0, row=1, padx=5, pady=5, columnspan=2)
     lbl_summary.grid(column=0, row=2, padx=5, pady=15,columnspan=2)
-    lbl_answer1.grid(column=0, row=3, padx=5, pady=15)
-    lbl_answer2.grid(column=1, row=3, padx=5, pady=15)
-    btn_answer1.grid(column=0, row=4, padx=5, pady=5, sticky='NEWS')
-    btn_answer2.grid(column=1, row=4, padx=5, pady=5, sticky='NEWS')
+    btn_answer1.grid(column=0, row=3, padx=5, pady=5, ipadx = 5,ipady = 5, sticky='NEWS')
+    btn_answer2.grid(column=1, row=3, padx=5, pady=5, ipadx = 5,ipady = 5, sticky='NEWS')
     return window
 
 
@@ -88,12 +83,15 @@ def guess(answer: int):
     global correct_answer
     global guessing_data
     global summary_stringvar
+    global score
     if answer == correct_answer:
-        print('You guessed correctly')
-        msg.showinfo(title='Correct', message='You guessed correctly')
+        #print('You guessed correctly')
+        score+=1
+        msg.showinfo(title='Correct', message=f'You guessed correctly\n {score}/{asw_counter}')
+
     else:
         print('You guessed wrong')
-        msg.showinfo(title='Wrong', message='You guessed wrong')
+        msg.showinfo(title='Wrong', message=f'You guessed wrong\n {score}/{asw_counter}')
     gen_title = guessing_data.iloc[asw_counter]['generated']
     orig_title = guessing_data.iloc[asw_counter]['title']
     summary = guessing_data.iloc[asw_counter]['summary']

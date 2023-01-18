@@ -2,12 +2,15 @@ import random
 import tkinter as tk
 import tkinter.messagebox as msg
 import tkinter.ttk as ttk
+import pandas as pd
 
 from TitleDataloader import TitleDataloader
 
 correct_answer = 3
 asw_counter = 0
+total_counter = 0
 guessing_data = None
+summary_data = None
 score = 0
 
 def window_setup(window: tk.Tk):
@@ -60,10 +63,19 @@ def answer_setup():
     global asw2_stringvar
     global guessing_data
     global summary_stringvar
-    guessing_data = TitleDataloader(path="tom_scott_videos_t5_headline_vanilla_summarized_v2.csv").load()
-    gen_title = guessing_data.iloc[asw_counter]['generated']
-    orig_title = guessing_data.iloc[asw_counter]['title']
-    summary = guessing_data.iloc[asw_counter]['summary']
+    global summary_data
+    global total_counter
+    #guessing_data = TitleDataloader(path="tom_scott_videos_t5_headline_vanilla_summarized_v2.csv").load()
+    guessing_data = TitleDataloader(path="tom_scott_videos_latest.csv").load()
+    summary_data = pd.read_csv("tom_scott_videos_t5_headline_vanilla_summarized_v2.csv", delimiter=',')
+    #gen_title = guessing_data.iloc[asw_counter]['generated']
+    summary = pd.Series()
+    while(len(summary)==0):
+        gen_title = guessing_data.iloc[asw_counter]['t0_3B_vanilla_title_summarized']
+        orig_title = guessing_data.iloc[asw_counter]['title']
+        summary = summary_data.loc[summary_data['title']==orig_title]['summary']
+        asw_counter += 1
+    summary = summary.values[0]
     if random.randint(1, 2) == 1:
         asw1_stringvar.set(gen_title)
         asw2_stringvar.set(orig_title)
@@ -73,7 +85,8 @@ def answer_setup():
         asw2_stringvar.set(gen_title)
         correct_answer = 1
     summary_stringvar.set(summary)
-    asw_counter += 1
+    total_counter+=1
+
 
 
 def guess(answer: int):
@@ -84,17 +97,22 @@ def guess(answer: int):
     global guessing_data
     global summary_stringvar
     global score
+    global total_counter
     if answer == correct_answer:
         #print('You guessed correctly')
         score+=1
-        msg.showinfo(title='Correct', message=f'You guessed correctly\n {score}/{asw_counter}')
+        msg.showinfo(title='Correct', message=f'You guessed correctly\n {score}/{total_counter}')
 
     else:
         print('You guessed wrong')
-        msg.showinfo(title='Wrong', message=f'You guessed wrong\n {score}/{asw_counter}')
-    gen_title = guessing_data.iloc[asw_counter]['generated']
-    orig_title = guessing_data.iloc[asw_counter]['title']
-    summary = guessing_data.iloc[asw_counter]['summary']
+        msg.showinfo(title='Wrong', message=f'You guessed wrong\n {score}/{total_counter}')
+    summary = pd.Series()
+    while (len(summary) == 0):
+        gen_title = guessing_data.iloc[asw_counter]['t0_3B_vanilla_title_summarized']
+        orig_title = guessing_data.iloc[asw_counter]['title']
+        summary = summary_data.loc[summary_data['title'] == orig_title]['summary']
+        asw_counter += 1
+    summary = summary.values[0]
     if random.randint(1, 2) == 1:
         asw1_stringvar.set(gen_title)
         asw2_stringvar.set(orig_title)
@@ -104,7 +122,7 @@ def guess(answer: int):
         asw2_stringvar.set(gen_title)
         correct_answer = 1
     summary_stringvar.set(summary)
-    asw_counter += 1
+    total_counter += 1
 
 
 if __name__ == '__main__':

@@ -101,7 +101,12 @@ def guess(answer: int):
     if answer == correct_answer:
         #print('You guessed correctly')
         score+=1
-        msg.showinfo(title='Correct', message=f'You guessed correctly\n {score}/{total_counter}')
+        if score >= 10:
+            msg.showinfo(title='Win', message=f'You won.\n You got 10 correct answers :)\n {score}/{total_counter}')
+            total_counter = 0
+            score = 0
+        else:
+            msg.showinfo(title='Correct', message=f'You guessed correctly\n {score}/{total_counter}')
 
     else:
         print('You guessed wrong')

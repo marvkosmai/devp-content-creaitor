@@ -17,7 +17,7 @@ nltk~=3.7
 isodate==0.6.1
 rouge==1.0.1
 matplotlib==3.5.2
-transformers==4.22.1
+transformers==4.30.0
 torch==1.12.1
 sentencepiece==0.1.97
 datasets==2.5.1
